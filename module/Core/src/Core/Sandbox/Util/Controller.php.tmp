@@ -1,0 +1,8 @@
+namespace {{module}}\Controller;
+
+use Core\Controller\AbstractController;
+
+class {{name}}Controller extends AbstractController
+{
+    
+}
