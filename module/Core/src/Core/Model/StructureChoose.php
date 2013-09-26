@@ -8,10 +8,10 @@ class StructureChoose extends AbstractConsoleModel
 	private $_module;
 	private $_controller;
 	private $_action;
-	
+
 	private $_resultsDir;
 	private $_actions;
-	
+
 	/**
 	 * @return the $_module
 	 */
@@ -66,13 +66,13 @@ class StructureChoose extends AbstractConsoleModel
 		}
 		return $this->_resultsDir;
 	}
-	
+
 	public function chooseModule()
 	{
 		$this->question('Module ?');
 		$resultdirs = $this->_getResultsDir();
 		$this->choose($resultdirs);
-		
+
 		$input = $this->getInput();
 		if(!empty($resultdirs[$input])) {
 			$this->_module = $module = $resultdirs[$input];
@@ -82,7 +82,7 @@ class StructureChoose extends AbstractConsoleModel
 			$this->chooseModule();
 		}
 	}
-	
+
 	public function chooseController()
 	{
 		$controllers = $this->_getControllerByModule($this->_module);
@@ -108,7 +108,7 @@ class StructureChoose extends AbstractConsoleModel
 		}
 		return $c;
 	}
-	
+
 	private function _getActions()
 	{
 		if ($this->_actions === null) {
@@ -128,7 +128,7 @@ class StructureChoose extends AbstractConsoleModel
 		}
 		return $this->_actions;
 	}
-	
+
 	public function chooseAction()
 	{
 		$actions = $this->_getActions();

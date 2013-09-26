@@ -3,6 +3,8 @@ namespace Core\Model;
 
 class ArrayToTextParser extends AbstractModel
 {
+    private $_lastContent;
+
     public function prepare($file)
     {
         $content = file_get_contents($file);
@@ -76,7 +78,19 @@ class ArrayToTextParser extends AbstractModel
         $content = '<?php' . PHP_EOL;
         $content .= 'return ';
         $content .= $this->_parseArray($array, 1);
+        $this->_lastContent = $content;
         return $content;
+    }
+
+    public function parseAndSave($array, $file)
+    {
+        $this->parse($array);
+        $this->save($file);
+    }
+
+    public function save($file)
+    {
+        file_put_contents($file, $this->_lastContent);
     }
 
     private function _parseArray($array, $depth)

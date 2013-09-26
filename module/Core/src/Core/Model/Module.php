@@ -59,6 +59,7 @@ class Module extends AbstractConsoleModel
         file_put_contents($this->_base . '/config/module.config.php', $module);
 
         file_put_contents($this->_base . '/config/routes.config.php', '<?php' . PHP_EOL . 'return array();');
+        file_put_contents($this->_base . '/config/console-routes.config.php', '<?php' . PHP_EOL . 'return array();');
 
         $module = $parser->parse(__DIR__ . '/../Sandbox/Module/Module.php.tmp', array('namespace' => $this->_name));
         file_put_contents($this->_base . '/Module.php', $module);

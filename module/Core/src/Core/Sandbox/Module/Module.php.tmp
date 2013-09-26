@@ -27,4 +27,9 @@ class Module
             ),
         );
     }
+    
+    public function getConsoleUsage($console)
+    {
+        return array();
+    }
 }

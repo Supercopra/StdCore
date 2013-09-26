@@ -38,7 +38,7 @@ class Module //implements ConsoleUsageProviderInterface
         );
     }
 
-    public function getConsoleUsage(Console $console){
+    public function getConsoleUsage($console){
         return array(
             'core-create'               => 'Initialisiert ein neues Projekt und setzt Standardeinstellungen (Datenbank-Verbindung, etc)',
             'core-create-module [name]' => 'Legt ein neues Module mit angegebenen Namen an',
