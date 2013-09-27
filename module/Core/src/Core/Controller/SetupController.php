@@ -43,11 +43,16 @@ class SetupController extends AbstractController
         $action->setConsole($this->getConsole());
         $action->create();
     }
-    
+
     public function createRouteAction()
     {
     	$routes = new Route();
     	$routes->setConsole($this->getConsole());
     	$routes->create();
+    }
+
+    public function createTable()
+    {
+
     }
 }

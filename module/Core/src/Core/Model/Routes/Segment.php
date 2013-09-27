@@ -62,7 +62,7 @@ class Segment extends AbstractConsoleModel
         $in = $this->getInput('0');
         if (is_numeric($in)) {
             if ($in != '0') {
-                $this->_constraints[$this->_currentParam] = $this->_consts[$in];
+                $this->_constraints[$this->_currentParam] = $this->_constsVal[$in];
             }
         } else {
             $this->_constraints[$this->_currentParam] = $in;
@@ -80,6 +80,7 @@ class Segment extends AbstractConsoleModel
             'options' => array(
                 'route'    => $this->_matching . $params,
                 'defaults' => array(
+                    '__NAMESPACE__' => $this->_options['module'] . '\Controller',
                     'controller'    => preg_replace('/Controller$/', '', $this->_options['controller']),
                     'action'        => preg_replace('/Action$/', '', $this->_options['action'])
                 ),

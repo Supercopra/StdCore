@@ -1,17 +1,16 @@
 <?php
 return array(
-	'kacken' => array(
-		'type' => 'Literal',
+	'test' => array(
+		'type' => 'Regex',
 		'options' => array(
-			'route' => '/kacken',
+			'spec' => '/test+%id%.html',
+			'regex' => '/test\+(?<id>.+)\.html',
 			'defaults' => array(
-				'$$__NAMESPACE__' => 'Test\Controller',
-				'controller' => 'Hallo',
-				'action' => 'kackwurst',
-			),
-			'may_terminate' => '1',
-			'child_routes' => array(
+				'__NAMESPACE__' => 'Test\Controller',
+				'controller' => 'Test',
+				'action' => 'test',
 			),
 		),
+		'may_terminate' => '1',
 	),
 );

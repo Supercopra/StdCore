@@ -44,5 +44,14 @@ return array(
                 'action'     => 'createRoute'
             )
         )
+    ),
+    'core-create-table' => array(
+        'options' => array(
+            'route'    => 'core-create-table',
+            'defaults' => array(
+                'controller' => 'Core\Controller\Setup',
+                'action'     => 'createTable'
+            )
+        )
     )
 );

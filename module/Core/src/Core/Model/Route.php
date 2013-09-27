@@ -13,19 +13,32 @@ class Route extends AbstractConsoleModel
 	private static $_types = array(
 		'Literal',
 		'Segment',
-		'Regex',
-		'Console'
+		'Regex'
 	);
 
 	private $_type;
 
-	public function create()
+	public function create($parmas = null)
 	{
 		$str = new StructureChoose();
 		$str->setConsole($this->getConsole());
-		$this->_module 	   = $str->chooseModule();
-		$this->_controller = $str->chooseController();
-		$this->_action 	   = $str->chooseAction();
+
+		if (!empty($parmas['module'])) {
+		    $this->_module = $parmas['module'];
+		} else {
+		    $this->_module 	   = $str->chooseModule();
+		}
+		if (!empty($parmas['action'])) {
+		    $this->_action = $parmas['action'];
+		} else {
+		    $this->_action 	   = $str->chooseAction();
+		}
+		if (!empty($parmas['controller'])) {
+		    $this->_controller = $parmas['controller'];
+		} else {
+		    $this->_controller 	   = $str->chooseController();
+		}
+
 		$this->_name = $this->_getName();
 		$this->_type = $this->_getType();
 		$class = 'Core\Model\Routes\\' . $this->_type;

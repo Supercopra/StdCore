@@ -40,6 +40,16 @@ class Action extends AbstractConsoleModel
         $this->_createAction();
         $this->_createView();
         $this->success('Die Action wurde erfolgreich angelget!');
+        $this->question('Route mit dieser Aktion verbinden ? ([y]/n)');
+        if ($this->getInput('y') == 'y') {
+            $route = new Route();
+            $route->setConsole($this->getConsole());
+            $route->create(array(
+                'module' => $this->_module,
+                'controller' => $this->_controller,
+                'action' => $this->_name
+            ));
+        }
     }
 
     private function _createNameForView()

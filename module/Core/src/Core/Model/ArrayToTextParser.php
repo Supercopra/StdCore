@@ -27,7 +27,11 @@ class ArrayToTextParser extends AbstractModel
             '\'$$__FILE__\''
         );
 
-        $content = str_replace($search, $replace, $content);
+        foreach ($search as &$s) {
+            $s = '/(?!\')' . $s . '(?!\')/';
+        }
+
+        $content = preg_replace($search, $replace, $content);
         file_put_contents($file, $content);
     }
 

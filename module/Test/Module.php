@@ -3,7 +3,6 @@ namespace Test;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
-use Zend\Console\Adapter\AdapterInterface as Console;
 
 class Module
 {
@@ -29,9 +28,9 @@ class Module
             ),
         );
     }
-
-    public function getConsoleUsage(Console $console){
-        return array(
-        );
+    
+    public function getConsoleUsage($console)
+    {
+        return array();
     }
 }

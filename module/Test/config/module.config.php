@@ -3,6 +3,11 @@ return array(
 	'router' => array(
 		'routes' => require __DIR__. '/routes.config.php',
 	),
+	'console' => array(
+		'router' => array(
+			'routes' => require __DIR__. '/console-routes.config.php',
+		),
+	),
 	'service_manager' => array(
 		'abstract_factories' => array(
 			'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
@@ -13,7 +18,7 @@ return array(
 	),
 	'controllers' => array(
 		'invokables' => array(
-			'Test\Controller\Hallo' => 'Test\Controller\HalloController',
+			'Test\Controller\Test' => 'Test\Controller\TestController',
 		),
 	),
 	'view_manager' => array(
