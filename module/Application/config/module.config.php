@@ -1,4 +1,6 @@
 <?php
+namespace Application;
+
 return array(
     'router' => array(
         'routes' => require __DIR__ . '/routes.config.php'

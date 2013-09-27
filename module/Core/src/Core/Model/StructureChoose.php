@@ -54,6 +54,21 @@ class StructureChoose extends AbstractConsoleModel
 		$this->_action = $_action;
 	}
 
+	public function getAllModules()
+	{
+	    return $this->_getResultsDir();
+	}
+
+	public function getAllEntitiesByModule($module)
+	{
+	    $dirs = array_filter(glob(getcwd() . '/module/' . $module . '/src/' . $module . '/Entity/*'));
+		$resultdirs = array();
+		foreach($dirs as $dir) {
+			$resultdirs[] = basename($dir);
+		}
+		return $resultdirs;
+	}
+
 	private function _getResultsDir()
 	{
 		if ($this->_resultsDir === null) {
@@ -141,5 +156,37 @@ class StructureChoose extends AbstractConsoleModel
 		}
 		$this->_action = $actions[$in];
 		return $actions[$in];
+	}
+
+	public function getSrcPathByModule($moduleName)
+	{
+	    $name = $moduleName;
+	    $path = getcwd() . '/module/' . $name . '/src/' . $name;
+	    return $path;
+	}
+
+	public function addMethodToClass($content, $file)
+	{
+	    $fileContent = file_get_contents($file);
+        $fileContent = preg_replace('', $content, $fileContent);
+        file_put_contents($file, $fileContent);
+        return $this;
+	}
+
+	public function prependMethodToClass($content, $file)
+	{
+	    $fileContent = file_get_contents($file);
+        $fileContent = preg_replace('/(class\s+.*?\n*\s*{)/D', '$1' . PHP_EOL . "\t" . $content, $fileContent);
+        file_put_contents($file, $fileContent);
+        return $this;
+	}
+
+	public function getPathFromNamespace($namespace)
+	{
+	    $n      = explode('\\', $namespace);
+	    $module = $n[0];
+	    unset($n[0]);
+	    $path   = implode('/', $n) . '.php';
+	    return getcwd() . '/module/' . $module . '/src/' .$module . '/' . $path;
 	}
 }

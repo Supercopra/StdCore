@@ -1,12 +1,12 @@
 <?php
 namespace Core\Controller;
 
+use Core\Model\Column;
+
+use Core\Model\Table;
 use Core\Model\Route;
-
 use Core\Model\Action;
-
 use Core\Model\Controller;
-
 use Core\Model\ArrayToTextParser;
 use Core\Model\Module;
 use Core\Model\Create;
@@ -51,8 +51,17 @@ class SetupController extends AbstractController
     	$routes->create();
     }
 
-    public function createTable()
+    public function createTableAction()
     {
+        $table = new Table();
+        $table->setConsole($this->getConsole());
+        $table->create();
+    }
 
+    public function addColumnAction()
+    {
+        $columm = new Column();
+        $columm->setConsole($this->getConsole());
+        $columm->create();
     }
 }

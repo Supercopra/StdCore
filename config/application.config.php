@@ -5,7 +5,7 @@ return array(
 		'Core',
 		'DoctrineModule',
 		'DoctrineORMModule',
-		'Test',
+		'Tett',
 	),
 	'module_listener_options' => array(
 		'module_paths' => array(

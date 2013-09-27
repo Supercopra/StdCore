@@ -77,9 +77,13 @@ class ArrayToTextParser extends AbstractModel
     /**
      * @param array $array
      */
-    public function parse($array)
+    public function parse($array, $preContent = null)
     {
-        $content = '<?php' . PHP_EOL;
+        $content = '';
+        $content .= '<?php' . PHP_EOL;
+        if ($preContent !== null) {
+            $content .= $preContent . PHP_EOL;
+        }
         $content .= 'return ';
         $content .= $this->_parseArray($array, 1);
         $this->_lastContent = $content;

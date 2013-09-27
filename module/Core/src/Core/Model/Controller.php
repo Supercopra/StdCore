@@ -74,7 +74,7 @@ class Controller extends AbstractConsoleModel
         $config = require $path;
         $config['controllers']['invokables'][$this->_module . '\Controller\\' . $this->_name] =
         $this->_module . '\Controller\\' . $this->_name . 'Controller';
-        $config = $parser->parse($config);
+        $config = $parser->parse($config, 'namespace ' . $this->_module . ';');
         file_put_contents($path, $config);
         $parser->refuse($path);
     }

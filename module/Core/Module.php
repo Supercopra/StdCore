@@ -45,6 +45,7 @@ class Module //implements ConsoleUsageProviderInterface
             'core-create-controller [name]' => 'Legt einen neuen Controller mit angegebenen Namen an',
             'core-create-action' => 'Legt eine neue Action in einem Controller an (inkl. View)',
             'core-create-route' => 'Legt eine Route an und verbindet diese mit einer Action',
+            'core-create-table' => 'Erstellt eine Tabelle (Entity + Repository)',
         );
     }
 }

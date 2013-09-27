@@ -1,0 +1,8 @@
+namespace {{module}}\Repository;
+
+use Doctrine\ORM\EntityRepository;
+
+class {{name}} extends EntityRepository
+{
+    
+}

@@ -53,5 +53,14 @@ return array(
                 'action'     => 'createTable'
             )
         )
+    ),
+    'core-add-column' => array(
+        'options' => array(
+            'route'    => 'core-add-column',
+            'defaults' => array(
+                'controller' => 'Core\Controller\Setup',
+                'action'     => 'addColumn'
+            )
+        )
     )
 );
